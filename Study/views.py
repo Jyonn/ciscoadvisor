@@ -5,6 +5,7 @@ from base.common import get_user_from_session
 from base.decorator import require_post, require_json, require_params, require_login
 from base.response import response, error_response
 from base.error import Error
+from gRPCapi.suggestion import suggestion_client
 
 
 @require_json
@@ -63,9 +64,10 @@ def run_study(request):
 
     if o_study.status is not Study.STATUS_READY:
         return error_response(Error.STUDY_IS_RUNNING)
-        o_study.status = Study.STATUS_RUNNING
-        o_study.save()
-        # TODO: run a study
-        return response()
+    o_study.status = Study.STATUS_RUNNING
+    o_study.save()
 
-    return er
+    ret = suggestion_client.run('ALGO_IP', 'ALGO_PORT', o_study.pk)
+    if ret.error is not Error.OK:
+        return error_response(ret.error)
+    return response(body=ret.body)
