@@ -1,4 +1,6 @@
 class Error:
+    STUDY_IS_RUNNING = 2011
+    NOT_FOUND_STUDY = 2010
     ERROR_CREATE_TRAIL = 2009
     ERROR_CREATE_STUDY = 2008
     NOT_FOUND_ALGO = 2007
@@ -6,7 +8,7 @@ class Error:
     ERROR_CREATE_USER = 2005
     USERNAME_LENGTH = 2004
     EXIST_USERNAME = 2003
-    NOT_FOUND_USERNAME = 2001
+    NOT_FOUND_USER = 2001
     ERROR_PASSWORD = 2000
 
     STRANGE = 1005
@@ -18,6 +20,7 @@ class Error:
     OK = 0
 
     ERROR_TUPLE = (
+        (NOT_FOUND_STUDY, "Study Not Exist"),
         (STRANGE, "Strange Error"),
         (ERROR_CREATE_TRAIL, "Error Create Trail"),
         (ERROR_CREATE_STUDY, "Error Create Study"),
@@ -26,7 +29,7 @@ class Error:
         (ERROR_CREATE_USER, "Error Create User"),
         (USERNAME_LENGTH, "Too Long Username Length"),
         (EXIST_USERNAME, "Exist Username"),
-        (NOT_FOUND_USERNAME, "Username Not Exist"),
+        (NOT_FOUND_USER, "Username Not Exist"),
         (ERROR_PASSWORD, "Error Username Or Password"),
 
         (ERROR_METHOD, 'Error HTTP Request Method'),

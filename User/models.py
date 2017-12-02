@@ -55,7 +55,15 @@ class User(models.Model):
         try:
             o_user = User.objects.get(username=username)
         except:
-            return Ret(Error.NOT_FOUND_USERNAME)
+            return Ret(Error.NOT_FOUND_USER)
+        return Ret(Error.OK, o_user)
+
+    @staticmethod
+    def get_user_by_id(user_id):
+        try:
+            o_user = User.objects.get(pk=user_id)
+        except:
+            return Ret(Error.NOT_FOUND_USER)
         return Ret(Error.OK, o_user)
 
     def to_dict(self):

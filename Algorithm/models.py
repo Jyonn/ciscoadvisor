@@ -34,3 +34,16 @@ class Algorithm(models.Model):
         except:
             return Ret(Error.NOT_FOUND_ALGO)
         return Ret(Error.OK, o_algo)
+
+    def to_dict(self):
+        return dict(
+            algo_id=self.pk,
+            name=self.aname,
+        )
+
+    @staticmethod
+    def get_algo_list():
+        algo_list = []
+        for o_algo in Algorithm.objects.all():
+            algo_list.append(o_algo.to_dict())
+        return Ret(Error.OK, algo_list)
