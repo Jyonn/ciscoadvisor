@@ -57,3 +57,9 @@ class User(models.Model):
         except:
             return Ret(Error.NOT_FOUND_USERNAME)
         return Ret(Error.OK, o_user)
+
+    def to_dict(self):
+        return dict(
+            user_id=self.pk,
+            username=self.username,
+        )

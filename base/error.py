@@ -9,6 +9,7 @@ class Error:
     NOT_FOUND_USERNAME = 2001
     ERROR_PASSWORD = 2000
 
+    STRANGE = 1005
     ERROR_METHOD = 1004
     REQUIRE_LOGIN = 1003
     REQUIRE_JSON = 1002
@@ -17,6 +18,7 @@ class Error:
     OK = 0
 
     ERROR_TUPLE = (
+        (STRANGE, "Strange Error"),
         (ERROR_CREATE_TRAIL, "Error Create Trail"),
         (ERROR_CREATE_STUDY, "Error Create Study"),
         (NOT_FOUND_ALGO, "Algorithm Not Exist"),

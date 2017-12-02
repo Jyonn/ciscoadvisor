@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Suggestion {
+	rpc GetSuggestion (Study) returns (ReplyMessage);
+}
+
+message Study {
+	int32 study_id = 1;
+}
+
+message ReplyMessage {
+	string message = 1;
+}
