@@ -28,8 +28,12 @@ class Study(models.Model):
         choices=STATUS_TUPLE,
         default=STATUS_READY,
     )
-    client_ip = models.GenericIPAddressField()
-    client_port = models.IntegerField()
+    client_ip = models.GenericIPAddressField(
+        default=None,
+    )
+    client_port = models.IntegerField(
+        default=0,
+    )
 
     @classmethod
     def create(cls, o_user, o_algo, config, c_ip, c_port):
@@ -64,6 +68,9 @@ class Study(models.Model):
         except:
             return Ret(Error.NOT_FOUND_STUDY)
         return Ret(Error.OK, o_study)
+
+    def belong(self, o_user):
+        return self.r_user == o_user
 
 
 class Trail(models.Model):

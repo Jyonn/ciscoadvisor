@@ -1,4 +1,7 @@
 class Error:
+    NO_RIGHT_RUN_STUDY = 2014
+    NO_SERVER_AVAILABLE = 2013
+    ERROR_CREATE_ALGO_SERVER = 2012
     STUDY_IS_RUNNING = 2011
     NOT_FOUND_STUDY = 2010
     ERROR_CREATE_TRAIL = 2009
@@ -20,6 +23,9 @@ class Error:
     OK = 0
 
     ERROR_TUPLE = (
+        (NO_RIGHT_RUN_STUDY, "No Right To Run This Study"),
+        (NO_SERVER_AVAILABLE, "No Server Available"),
+        (ERROR_CREATE_ALGO_SERVER, "Error Create Algo Server"),
         (NOT_FOUND_STUDY, "Study Not Exist"),
         (STRANGE, "Strange Error"),
         (ERROR_CREATE_TRAIL, "Error Create Trail"),

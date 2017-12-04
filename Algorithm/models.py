@@ -47,3 +47,41 @@ class Algorithm(models.Model):
         for o_algo in Algorithm.objects.all():
             algo_list.append(o_algo.to_dict())
         return Ret(Error.OK, algo_list)
+
+
+class AlgoServer(models.Model):
+    ip = models.GenericIPAddressField(
+        default=None,
+    )
+    port = models.IntegerField(
+        default=0,
+    )
+
+    @classmethod
+    def create(cls, ip, port):
+        try:
+            o_algo_server = cls(ip=ip, port=port)
+        except:
+            return Ret(Error.ERROR_CREATE_ALGO_SERVER)
+        return o_algo_server
+
+    def to_dict(self):
+        return dict(id=self.pk, ip=self.ip, port=self.port)
+
+    @staticmethod
+    def get_server_list():
+        _server_list = AlgoServer.objects.all()
+        server_list = []
+        for o_server in _server_list:
+            server_list.append(o_server.to_dict())
+        return Ret(Error.OK, server_list)
+
+    @staticmethod
+    def choose_server():
+        ret = AlgoServer.get_server_list()
+        if ret.error is not Error.OK:
+            return Ret(ret.error)
+        server_list = ret.body
+        if len(server_list) == 0:
+            return Ret(Error.NO_SERVER_AVAILABLE)
+        return Ret(Error.OK, server_list[0])
