@@ -19,6 +19,11 @@ class SuggestionStub(object):
         request_serializer=suggestion__pb2.Study.SerializeToString,
         response_deserializer=suggestion__pb2.ReplyMessage.FromString,
         )
+    self.CreateAlgorithm = channel.unary_unary(
+        '/Suggestion/CreateAlgorithm',
+        request_serializer=suggestion__pb2.Algorithm.SerializeToString,
+        response_deserializer=suggestion__pb2.ReplyMessage.FromString,
+        )
 
 
 class SuggestionServicer(object):
@@ -32,12 +37,24 @@ class SuggestionServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def CreateAlgorithm(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_SuggestionServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetSuggestion': grpc.unary_unary_rpc_method_handler(
           servicer.GetSuggestion,
           request_deserializer=suggestion__pb2.Study.FromString,
+          response_serializer=suggestion__pb2.ReplyMessage.SerializeToString,
+      ),
+      'CreateAlgorithm': grpc.unary_unary_rpc_method_handler(
+          servicer.CreateAlgorithm,
+          request_deserializer=suggestion__pb2.Algorithm.FromString,
           response_serializer=suggestion__pb2.ReplyMessage.SerializeToString,
       ),
   }

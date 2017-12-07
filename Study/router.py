@@ -1,4 +1,4 @@
-from Study.views import create_study, run_study, ask_for_trail, reply_to_trail
+from Study.views import create_study, run_study, ask_for_trail, reply_to_trail, pause_study
 from base.error import Error
 from base.response import error_response
 
@@ -6,9 +6,18 @@ from base.response import error_response
 def rt_study(request):
     if request.method == "POST":
         return create_study(request)
-    if request.method == "PUT":
+    return error_response(Error.ERROR_METHOD)
 
+
+def rt_study_run(request):
+    if request.method == "POST":
         return run_study(request)
+    return error_response(Error.ERROR_METHOD)
+
+
+def rt_study_pause(request):
+    if request.method == "POST":
+        return pause_study(request)
     return error_response(Error.ERROR_METHOD)
 
 

@@ -1,8 +1,13 @@
 class Error:
-    NO_RIGHT_RUN_STUDY = 2014
+    FINISHED = 2019
+    STUDY_IS_NOT_RUNNING = 2018
+    STUDY_PAUSED = 2017
+    NOT_FOUND_TRAIL = 2016
+    METRIC_FLOAT = 2015
+    NO_RIGHT_MODIFY_STUDY = 2014
     NO_SERVER_AVAILABLE = 2013
     ERROR_CREATE_ALGO_SERVER = 2012
-    STUDY_IS_RUNNING = 2011
+    STUDY_IS_RUNNING_OR_FINISHED = 2011
     NOT_FOUND_STUDY = 2010
     ERROR_CREATE_TRAIL = 2009
     ERROR_CREATE_STUDY = 2008
@@ -23,9 +28,15 @@ class Error:
     OK = 0
 
     ERROR_TUPLE = (
-        (NO_RIGHT_RUN_STUDY, "No Right To Run This Study"),
+        (FINISHED, "Study Finished"),
+        (STUDY_IS_NOT_RUNNING, "Study Is Not Running"),
+        (STUDY_PAUSED, "Study Paused"),
+        (NOT_FOUND_TRAIL, "Trail Not Exist"),
+        (METRIC_FLOAT, "Metric Should Be An Integer Or Float"),
+        (NO_RIGHT_MODIFY_STUDY, "No Right To Modify This Study"),
         (NO_SERVER_AVAILABLE, "No Server Available"),
         (ERROR_CREATE_ALGO_SERVER, "Error Create Algo Server"),
+        (STUDY_IS_RUNNING_OR_FINISHED, "Study Is Running Or Finished"),
         (NOT_FOUND_STUDY, "Study Not Exist"),
         (STRANGE, "Strange Error"),
         (ERROR_CREATE_TRAIL, "Error Create Trail"),

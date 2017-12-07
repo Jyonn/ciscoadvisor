@@ -23,6 +23,7 @@ class Algorithm(models.Model):
                 aname=aname,
                 path=path,
             )
+            o_algo.save()
         except:
             return Ret(Error.ERROR_CREATE_ALGO)
         return Ret(Error.OK, o_algo)
@@ -69,8 +70,11 @@ class AlgoServer(models.Model):
         return dict(id=self.pk, ip=self.ip, port=self.port)
 
     @staticmethod
-    def get_server_list():
+    def get_server_list(raw=False):
         _server_list = AlgoServer.objects.all()
+        if raw:
+            return Ret(Error.OK, _server_list)
+        print('len', len(_server_list))
         server_list = []
         for o_server in _server_list:
             server_list.append(o_server.to_dict())
@@ -78,7 +82,7 @@ class AlgoServer(models.Model):
 
     @staticmethod
     def choose_server():
-        ret = AlgoServer.get_server_list()
+        ret = AlgoServer.get_server_list(raw=True)
         if ret.error is not Error.OK:
             return Ret(ret.error)
         server_list = ret.body

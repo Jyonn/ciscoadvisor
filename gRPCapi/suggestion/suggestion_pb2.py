@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='suggestion.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x10suggestion.proto\"\x19\n\x05Study\x12\x10\n\x08study_id\x18\x01 \x01(\x05\"\x1f\n\x0cReplyMessage\x12\x0f\n\x07message\x18\x01 \x01(\t24\n\nSuggestion\x12&\n\rGetSuggestion\x12\x06.Study\x1a\r.ReplyMessageb\x06proto3')
+  serialized_pb=_b('\n\x10suggestion.proto\"\x19\n\x05Study\x12\x10\n\x08study_id\x18\x01 \x01(\x05\"1\n\tAlgorithm\x12\x11\n\talgo_name\x18\x01 \x01(\t\x12\x11\n\talgo_path\x18\x02 \x01(\t\"\x1f\n\x0cReplyMessage\x12\x0f\n\x07message\x18\x01 \x01(\t2b\n\nSuggestion\x12&\n\rGetSuggestion\x12\x06.Study\x1a\r.ReplyMessage\x12,\n\x0f\x43reateAlgorithm\x12\n.Algorithm\x1a\r.ReplyMessageb\x06proto3')
 )
 
 
@@ -56,6 +56,44 @@ _STUDY = _descriptor.Descriptor(
 )
 
 
+_ALGORITHM = _descriptor.Descriptor(
+  name='Algorithm',
+  full_name='Algorithm',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='algo_name', full_name='Algorithm.algo_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='algo_path', full_name='Algorithm.algo_path', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=47,
+  serialized_end=96,
+)
+
+
 _REPLYMESSAGE = _descriptor.Descriptor(
   name='ReplyMessage',
   full_name='ReplyMessage',
@@ -82,11 +120,12 @@ _REPLYMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=47,
-  serialized_end=78,
+  serialized_start=98,
+  serialized_end=129,
 )
 
 DESCRIPTOR.message_types_by_name['Study'] = _STUDY
+DESCRIPTOR.message_types_by_name['Algorithm'] = _ALGORITHM
 DESCRIPTOR.message_types_by_name['ReplyMessage'] = _REPLYMESSAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -96,6 +135,13 @@ Study = _reflection.GeneratedProtocolMessageType('Study', (_message.Message,), d
   # @@protoc_insertion_point(class_scope:Study)
   ))
 _sym_db.RegisterMessage(Study)
+
+Algorithm = _reflection.GeneratedProtocolMessageType('Algorithm', (_message.Message,), dict(
+  DESCRIPTOR = _ALGORITHM,
+  __module__ = 'suggestion_pb2'
+  # @@protoc_insertion_point(class_scope:Algorithm)
+  ))
+_sym_db.RegisterMessage(Algorithm)
 
 ReplyMessage = _reflection.GeneratedProtocolMessageType('ReplyMessage', (_message.Message,), dict(
   DESCRIPTOR = _REPLYMESSAGE,
@@ -112,8 +158,8 @@ _SUGGESTION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=80,
-  serialized_end=132,
+  serialized_start=131,
+  serialized_end=229,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSuggestion',
@@ -121,6 +167,15 @@ _SUGGESTION = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_STUDY,
+    output_type=_REPLYMESSAGE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='CreateAlgorithm',
+    full_name='Suggestion.CreateAlgorithm',
+    index=1,
+    containing_service=None,
+    input_type=_ALGORITHM,
     output_type=_REPLYMESSAGE,
     options=None,
   ),

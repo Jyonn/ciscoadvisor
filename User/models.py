@@ -20,9 +20,9 @@ class User(models.Model):
     @staticmethod
     def _hash(s):
         import hashlib
-        sha = hashlib.sha1()
-        sha.update(s.encode())
-        return sha.hexdigest()
+        md5 = hashlib.md5()
+        md5.update(s.encode())
+        return md5.hexdigest()
 
     @classmethod
     def create(cls, username, password):

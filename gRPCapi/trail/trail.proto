@@ -6,6 +6,7 @@ service Trail {
 
 message Data {
     string data = 1;
+	int32 trail_id = 2;
 }
 
 message ReplyMessage {

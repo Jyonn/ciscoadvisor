@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='trail.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0btrail.proto\"\x14\n\x04\x44\x61ta\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"\x1f\n\x0cReplyMessage\x12\x0f\n\x07message\x18\x01 \x01(\t2)\n\x05Trail\x12 \n\x08RunTrail\x12\x05.Data\x1a\r.ReplyMessageb\x06proto3')
+  serialized_pb=_b('\n\x0btrail.proto\"&\n\x04\x44\x61ta\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\x12\x10\n\x08trail_id\x18\x02 \x01(\x05\"\x1f\n\x0cReplyMessage\x12\x0f\n\x07message\x18\x01 \x01(\t2)\n\x05Trail\x12 \n\x08RunTrail\x12\x05.Data\x1a\r.ReplyMessageb\x06proto3')
 )
 
 
@@ -39,6 +39,13 @@ _DATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='trail_id', full_name='Data.trail_id', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -52,7 +59,7 @@ _DATA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=15,
-  serialized_end=35,
+  serialized_end=53,
 )
 
 
@@ -82,8 +89,8 @@ _REPLYMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37,
-  serialized_end=68,
+  serialized_start=55,
+  serialized_end=86,
 )
 
 DESCRIPTOR.message_types_by_name['Data'] = _DATA
@@ -112,8 +119,8 @@ _TRAIL = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=70,
-  serialized_end=111,
+  serialized_start=88,
+  serialized_end=129,
   methods=[
   _descriptor.MethodDescriptor(
     name='RunTrail',
